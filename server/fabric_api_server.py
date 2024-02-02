@@ -65,7 +65,9 @@ def auth_required(f):
 
 # Check for a valid token/user for the given route
 def check_auth_token(token, route):
+    # print(valid_tokens, token, route)
     # Check if token is valid for the given route and return corresponding user
+    # print(route in valid_tokens, token in valid_tokens[route])
     if route in valid_tokens and token in valid_tokens[route]:
         return valid_tokens[route][token]
     else:
@@ -107,14 +109,27 @@ def extwis():
 
     # Get data from client
     input_data = data["input"]
+    pattern = data["pattern"]
 
     # Set the system and user URLs
-    system_url = "https://raw.githubusercontent.com/danielmiessler/fabric/main/patterns/extract_wisdom/system.md"
-    user_url = "https://raw.githubusercontent.com/danielmiessler/fabric/main/patterns/extract_wisdom/user.md"
+    system_url = "https://raw.githubusercontent.com/zainalqaimi/fabric/main/patterns/extract_wisdom/system.md"
+    user_url = "https://raw.githubusercontent.com/zainalqaimi/fabric/main/patterns/extract_wisdom/user.md"
+
+    system_pattern = f'../patterns/{pattern}/system.md'
+    user_pattern = f'../patterns/{pattern}/system.md'
 
     # Fetch the prompt content
-    system_content = fetch_content_from_url(system_url)
-    user_file_content = fetch_content_from_url(user_url)
+    with open(system_pattern, 'r') as file:
+        system_content = file.read()
+
+    with open(user_pattern, 'r') as file:
+        user_file_content = file.read()
+
+    print(system_content)
+
+    # Fetch the prompt content
+    # system_content = fetch_content_from_url(system_url)
+    # user_file_content = fetch_content_from_url(user_url)
 
     # Build the API call
     system_message = {"role": "system", "content": system_content}
@@ -136,4 +151,4 @@ def extwis():
 
 # Run the application
 if __name__ == "__main__":
-    app.run(host="1.1.1.1", port=13337, debug=True)
+    app.run(host="127.0.0.1", port=3000, debug=True)
