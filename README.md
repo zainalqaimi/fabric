@@ -2,10 +2,11 @@
 
 <img src="./images/fabric-logo-gif.gif" alt="fabriclogo" width="400" height="400"/>
 
-# `fabric`
+# `fabric-z`
 
 <h4><code>fabric</code> is an open-source framework for augmenting humans using AI.</h4>
 
+[Personal (zainalqaimi) Updates](#personalupdates) •
 [What and Why](#whatandwhy) •
 [Quickstart](#quickstart) •
 [Usage](#usage) •
@@ -17,6 +18,11 @@
 </div>
 
 <br />
+
+## Personal Updates
+Added a dropdown menu in the UI to select a pattern from patterns folder
+
+Changed all URLs to localhost for easy server set up
 
 ## What and Why
 
